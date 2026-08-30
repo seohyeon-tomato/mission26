@@ -116,6 +116,30 @@ def search_prompts(prompts):
     show_prompt_list(results)
 
 
+def get_prompt_by_number(prompts, message="프롬프트 번호: "):
+    """번호가 올바르면 해당 프롬프트를, 아니면 None을 반환한다."""
+    number = input(message).strip()
+    if not number.isdigit() or not 1 <= int(number) <= len(prompts):
+        print("올바른 프롬프트 번호를 입력해 주세요.")
+        return None
+    return prompts[int(number) - 1]
+
+
+def show_prompt_detail(prompts):
+    """선택한 프롬프트의 전체 정보를 출력한다."""
+    show_prompt_list(prompts)
+    prompt = get_prompt_by_number(prompts)
+    if prompt is None:
+        return
+
+    favorite = "예" if prompt["favorite"] else "아니요"
+    print("\n--- 프롬프트 상세 ---")
+    print(f'제목: {prompt["title"]}')
+    print(f'카테고리: {prompt["category"]}')
+    print(f"즐겨찾기: {favorite}")
+    print(f'내용: {prompt["content"]}')
+
+
 def main():
     """프로그램의 시작점."""
     prompts = create_default_prompts()
@@ -134,6 +158,8 @@ def main():
             show_by_category(prompts)
         elif choice == "4":
             search_prompts(prompts)
+        elif choice == "5":
+            show_prompt_detail(prompts)
         elif choice == "0":
             print("프로그램을 종료합니다.")
             break
