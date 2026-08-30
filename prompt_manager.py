@@ -140,6 +140,18 @@ def show_prompt_detail(prompts):
     print(f'내용: {prompt["content"]}')
 
 
+def toggle_favorite(prompts):
+    """선택한 프롬프트의 즐겨찾기 상태를 반대로 변경한다."""
+    show_prompt_list(prompts)
+    prompt = get_prompt_by_number(prompts)
+    if prompt is None:
+        return
+
+    prompt["favorite"] = not prompt["favorite"]
+    state = "추가" if prompt["favorite"] else "해제"
+    print(f'"{prompt["title"]}" 프롬프트를 즐겨찾기에서 {state}했습니다.')
+
+
 def main():
     """프로그램의 시작점."""
     prompts = create_default_prompts()
@@ -160,6 +172,8 @@ def main():
             search_prompts(prompts)
         elif choice == "5":
             show_prompt_detail(prompts)
+        elif choice == "6":
+            toggle_favorite(prompts)
         elif choice == "0":
             print("프로그램을 종료합니다.")
             break
