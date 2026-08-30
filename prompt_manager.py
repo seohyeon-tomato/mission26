@@ -38,6 +38,33 @@ def show_menu():
     print("0. 종료")
 
 
+def get_non_empty_input(message):
+    """빈 문자열이 아닌 값이 입력될 때까지 다시 요청한다."""
+    while True:
+        value = input(message).strip()
+        if value:
+            return value
+        print("입력값은 비워둘 수 없습니다. 다시 입력해 주세요.")
+
+
+def add_prompt(prompts):
+    """사용자에게 정보를 입력받아 새 프롬프트를 추가한다."""
+    print("\n--- 프롬프트 추가 ---")
+    title = get_non_empty_input("제목: ")
+    content = get_non_empty_input("내용: ")
+    category = get_non_empty_input("카테고리: ")
+
+    prompts.append(
+        {
+            "title": title,
+            "content": content,
+            "category": category,
+            "favorite": False,
+        }
+    )
+    print("프롬프트가 추가되었습니다!")
+
+
 def main():
     """프로그램의 시작점."""
     prompts = create_default_prompts()
@@ -48,10 +75,13 @@ def main():
         show_menu()
         choice = input("선택: ").strip()
 
-        if choice == "0":
+        if choice == "1":
+            add_prompt(prompts)
+        elif choice == "0":
             print("프로그램을 종료합니다.")
             break
-        print("아직 준비 중인 기능입니다.")
+        else:
+            print("아직 준비 중인 기능입니다.")
 
 
 if __name__ == "__main__":
