@@ -190,7 +190,7 @@ def main():
             print("프로그램을 종료합니다.")
             break
         else:
-            print("아직 준비 중인 기능입니다.")
+            print("올바른 메뉴 번호를 입력해 주세요.")
 
 
 if __name__ == "__main__":
