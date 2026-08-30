@@ -65,6 +65,18 @@ def add_prompt(prompts):
     print("프롬프트가 추가되었습니다!")
 
 
+def show_prompt_list(prompts):
+    """저장된 프롬프트의 제목과 카테고리를 목록으로 출력한다."""
+    print("\n--- 프롬프트 목록 ---")
+    if not prompts:
+        print("저장된 프롬프트가 없습니다.")
+        return
+
+    for index, prompt in enumerate(prompts, start=1):
+        star = "★" if prompt["favorite"] else "☆"
+        print(f'{index}. {star} [{prompt["category"]}] {prompt["title"]}')
+
+
 def main():
     """프로그램의 시작점."""
     prompts = create_default_prompts()
@@ -77,6 +89,8 @@ def main():
 
         if choice == "1":
             add_prompt(prompts)
+        elif choice == "2":
+            show_prompt_list(prompts)
         elif choice == "0":
             print("프로그램을 종료합니다.")
             break
