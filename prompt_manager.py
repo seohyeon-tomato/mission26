@@ -152,6 +152,16 @@ def toggle_favorite(prompts):
     print(f'"{prompt["title"]}" 프롬프트를 즐겨찾기에서 {state}했습니다.')
 
 
+def show_favorites(prompts):
+    """즐겨찾기로 지정된 프롬프트만 출력한다."""
+    favorites = [prompt for prompt in prompts if prompt["favorite"]]
+    print("\n--- 즐겨찾기 목록 ---")
+    if not favorites:
+        print("즐겨찾기한 프롬프트가 없습니다.")
+        return
+    show_prompt_list(favorites)
+
+
 def main():
     """프로그램의 시작점."""
     prompts = create_default_prompts()
@@ -174,6 +184,8 @@ def main():
             show_prompt_detail(prompts)
         elif choice == "6":
             toggle_favorite(prompts)
+        elif choice == "7":
+            show_favorites(prompts)
         elif choice == "0":
             print("프로그램을 종료합니다.")
             break
