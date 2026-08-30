@@ -41,11 +41,11 @@
 - 외부 라이브러리 없음
 
 ```bash
-python3 --version
-python3 prompt_manager.py
+/opt/homebrew/bin/python3.14 --version
+/opt/homebrew/bin/python3.14 prompt_manager.py
 ```
 
-현재 기본 `python3`의 버전이 3.10보다 낮다면, 설치된 Python 3.10 이상의 실행 파일을 선택해서 실행합니다.
+현재 기본 `python3`는 macOS의 Python 3.9를 가리키므로, 이미 설치된 Homebrew Python 3.14를 명시해서 실행합니다.
 
 ## 실행 흐름
 
@@ -65,7 +65,7 @@ python3 prompt_manager.py
 ## 테스트
 
 ```bash
-python3 -m unittest -v
+/opt/homebrew/bin/python3.14 -m unittest -v
 ```
 
 기본 데이터, 프롬프트 추가, 빈 입력 검증, 목록, 검색, 즐겨찾기를 자동으로 확인합니다.

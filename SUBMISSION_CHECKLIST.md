@@ -5,7 +5,7 @@
 프로젝트 폴더에서 다음 명령으로 실행합니다.
 
 ```bash
-/Users/seo-hyeonkim/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 prompt_manager.py
+/opt/homebrew/bin/python3.14 prompt_manager.py
 ```
 
 한 번의 실행에서 다음 장면이 보이도록 테스트하고 캡처합니다.
@@ -36,7 +36,7 @@
 다음 결과를 캡처합니다.
 
 ```bash
-/Users/seo-hyeonkim/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 --version
+/opt/homebrew/bin/python3.14 --version
 git --version
 ```
 
@@ -74,7 +74,7 @@ git pull --ff-only
 ## 5. 자동 테스트
 
 ```bash
-/Users/seo-hyeonkim/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 -m unittest -v
+/opt/homebrew/bin/python3.14 -m unittest -v
 ```
 
 `Ran 6 tests`와 `OK`가 표시되면 핵심 기능 테스트를 통과한 것입니다.
