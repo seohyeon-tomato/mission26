@@ -25,11 +25,33 @@ def create_default_prompts():
     ]
 
 
+def show_menu():
+    """사용자가 선택할 수 있는 전체 메뉴를 출력한다."""
+    print("\n=== 메뉴 ===")
+    print("1. 프롬프트 추가")
+    print("2. 프롬프트 목록")
+    print("3. 카테고리별 조회")
+    print("4. 프롬프트 검색")
+    print("5. 프롬프트 상세 보기")
+    print("6. 즐겨찾기 추가/해제")
+    print("7. 즐겨찾기 목록")
+    print("0. 종료")
+
+
 def main():
     """프로그램의 시작점."""
     prompts = create_default_prompts()
     print("=== 나만의 프롬프트 관리 ===")
     print(f"기본 프롬프트 {len(prompts)}개를 불러왔습니다.")
+
+    while True:
+        show_menu()
+        choice = input("선택: ").strip()
+
+        if choice == "0":
+            print("프로그램을 종료합니다.")
+            break
+        print("아직 준비 중인 기능입니다.")
 
 
 if __name__ == "__main__":
