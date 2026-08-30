@@ -99,6 +99,23 @@ def show_by_category(prompts):
     show_prompt_list(filtered)
 
 
+def search_prompts(prompts):
+    """제목 또는 내용에 검색어가 포함된 프롬프트를 출력한다."""
+    keyword = get_non_empty_input("검색어: ").lower()
+    results = [
+        prompt
+        for prompt in prompts
+        if keyword in prompt["title"].lower()
+        or keyword in prompt["content"].lower()
+    ]
+
+    if not results:
+        print("검색 결과가 없습니다.")
+        return
+    print(f"'{keyword}' 검색 결과")
+    show_prompt_list(results)
+
+
 def main():
     """프로그램의 시작점."""
     prompts = create_default_prompts()
@@ -115,6 +132,8 @@ def main():
             show_prompt_list(prompts)
         elif choice == "3":
             show_by_category(prompts)
+        elif choice == "4":
+            search_prompts(prompts)
         elif choice == "0":
             print("프로그램을 종료합니다.")
             break
