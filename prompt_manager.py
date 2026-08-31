@@ -79,7 +79,7 @@ def show_prompt_list(prompts):
 
 def show_by_category(prompts):
     """선택한 카테고리에 속한 프롬프트만 출력한다."""
-    categories = sorted({prompt["category"] for prompt in prompts})
+    categories = list(dict.fromkeys(prompt["category"] for prompt in prompts))
     if not categories:
         print("등록된 카테고리가 없습니다.")
         return
