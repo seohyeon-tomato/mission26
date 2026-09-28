@@ -11,7 +11,7 @@ v4 디자인을 유지한 4페이지, Python AI API, 브라우저 저장, 반응
 - [x] Codyssey Python API 어댑터 구현 및 모의 응답 테스트.
 - [x] 콘솔 환경변수로 `gpt-5-mini` 실제 Codyssey 호출 성공 확인.
 - [x] 로컬 Git 저장소 초기화 및 커밋 이력 시작.
-- [ ] GitHub 원격 저장소 생성 및 업로드.
+- [x] GitHub `seohyeon-tomato/mission26`의 `Practical Usage/A1-3_website`에 업로드.
 - [ ] Vercel 공개 URL 배포·실서비스 검증.
 - [x] 실제 AI 동작 스크린샷 저장(`docs/screenshots/ai-candidate-live-codyssey.png`).
 - [x] 입력 중단 → 후보 1회 요청 → 사용자 확인 → searchQuery 저장.

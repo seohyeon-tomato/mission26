@@ -5,7 +5,7 @@
 **현재 상태: 로컬 MVP와 실제 Codyssey AI 연동 검증 완료.** v4 CSS를 그대로 유지한 4페이지, 사진 최적화, 저장, AI 확인 흐름이 연결되어 있다. 공개 배포는 아직 진행하지 않았다.
 
 - 배포 URL: 미배포
-- GitHub 저장소: 로컬 Git 커밋 준비 완료, 원격 저장소 미생성
+- GitHub 저장소: https://github.com/seohyeon-tomato/mission26/tree/main/Practical%20Usage/A1-3_website
 - 디자인: DESIGN.md
 - 기획서: docs/SERVICE_PLAN.md
 - 체크리스트: IMPLEMENTATION.md
@@ -68,7 +68,7 @@ http://127.0.0.1:8080 으로 접속한다. `.env.local`은 서버 시작 시 읽
 
 Codyssey `gpt-5-mini` 실제 응답은 로컬에서 확인했다. 초기 240토큰·8초 제한에서는 모델의 내부 추론 후 출력이 비거나 시간 초과가 발생해, 출력 1000토큰·서버 20초·브라우저 25초로 조정했다. 공개 서비스 호출 제한은 Codyssey 기관 정책을 확인해야 한다. 브라우저 디바운스는 의도치 않은 중복 호출을 줄이지만 서버 전체 요청 제한을 보장하지 않는다.
 
-로컬 Git 저장소와 커밋 이력은 준비되어 있다. GitHub 원격 저장소 생성과 push는 아직 실행하지 않았다.
+로컬 Git 저장소와 커밋 이력이 준비되어 있으며, `mission26/main`의 `Practical Usage/A1-3_website`에 업로드했다.
 
 ## 실행 흐름을 설명하기
 사용자가 상품명을 입력하면 JavaScript가 입력 중단을 기다렸다가 fetch 요청을 보낸다. Python 함수는 환경변수의 키로 Codyssey를 호출하고 검사한 후보만 반환한다. 사용자가 후보를 확인하면 사진·아이템과 함께 브라우저에 저장한다. Detail은 그 기록을 읽어 검색 링크를 만든다.
