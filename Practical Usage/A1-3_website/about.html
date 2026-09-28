@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — SLIG</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script type="module" src="js/app.mjs"></script>
+</head>
+<body data-page="about">
+  <div class="page-shell">
+    <div class="site-frame">
+      <header class="topbar">
+        <a class="brand" href="index.html" aria-label="SLIG 피드 홈">
+          <span class="logo-sticker" aria-hidden="true">✦</span>
+          <span class="logo">SLIG</span>
+        </a>
+        <nav class="nav" aria-label="주요 메뉴">
+          <a href="index.html">FEED</a>
+          <a href="upload.html">UPLOAD</a>
+          <a class="active" href="about.html" aria-current="page">ABOUT</a>
+        </nav>
+        <nav class="auth-nav" aria-label="계정 메뉴">
+          <a aria-disabled="true" title="준비 중">로그인</a>
+          <a aria-disabled="true" title="준비 중">회원가입</a>
+        </nav>
+      </header>
+
+      <main class="about-wrap">
+        <section class="hero about-hero">
+          <span class="eyebrow">ABOUT SMALL LITTLE ITEMS</span>
+          <h1>Tiny things,<br>real taste.</h1>
+          <p>SLIG는 가방 속 작은 소지품을 사진과 함께 기록하고, 다른 사람의 현실적인 취향을 구경하는 소지품 갤러리예요.</p>
+          <a class="btn" href="upload.html">내 가방 기록하기</a>
+        </section>
+
+        <section aria-labelledby="steps-title">
+          <div class="section-head">
+            <h2 id="steps-title">how it works ♡</h2>
+            <span>three little steps</span>
+          </div>
+          <div class="about-grid">
+            <article class="panel step-card">
+              <span class="item-tag">STEP 01</span>
+              <h2>기록하기</h2>
+              <p>사진 한 장과 게시물 제목, 가방 속 제품 이름과 옵션을 적어요.</p>
+            </article>
+            <article class="panel step-card">
+              <span class="item-tag">STEP 02</span>
+              <h2>제품 확인하기</h2>
+              <p>입력을 잠시 멈추면 AI가 “이 제품 맞아요?” 후보를 보여줘요. 사용자가 확인한 정보만 저장해요.</p>
+            </article>
+            <article class="panel step-card">
+              <span class="item-tag">STEP 03</span>
+              <h2>둘러보기</h2>
+              <p>피드에서 기록을 열어보고, 저장된 검색어로 네이버 쇼핑에서 제품을 찾아볼 수 있어요.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel storage-note" aria-labelledby="storage-title">
+          <span class="eyebrow">YOUR BROWSER, YOUR BAG</span>
+          <h2 id="storage-title">기록은 이 브라우저에만 저장돼요.</h2>
+          <p>SLIG의 MVP는 계정이나 서버 저장소를 사용하지 않아요. 올린 사진과 기록은 현재 사용 중인 브라우저의 localStorage에 보관되며, 브라우저 데이터를 지우거나 다른 기기로 이동하면 보이지 않을 수 있어요.</p>
+        </section>
+      </main>
+
+      <div class="scrap-note">✎ AI는 제품 후보를 제안해요. 최종 확인은 사용자가 직접 해주세요.</div>
+      <div class="footer-note">SLIG · about</div>
+    </div>
+  </div>
+</body>
+</html>

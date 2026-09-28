@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SLIG — Small Little Items Gallery</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script type="module" src="js/app.mjs"></script>
+</head>
+<body data-page="feed">
+  <div class="page-shell">
+    <div class="site-frame">
+      <header class="topbar">
+        <a class="brand" href="index.html" aria-label="SLIG 피드 홈">
+          <span class="logo-sticker" aria-hidden="true">✦</span>
+          <span class="logo">SLIG</span>
+        </a>
+        <nav class="nav" aria-label="주요 메뉴">
+          <a class="active" href="index.html" aria-current="page">FEED</a>
+          <a href="upload.html">UPLOAD</a>
+          <a href="about.html">ABOUT</a>
+        </nav>
+        <nav class="auth-nav" aria-label="계정 메뉴">
+          <a aria-disabled="true" title="준비 중">로그인</a>
+          <a aria-disabled="true" title="준비 중">회원가입</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <span class="eyebrow">SMALL LITTLE ITEMS GALLERY</span>
+          <h1>Peeking into<br>tiny little favorites.</h1>
+          <p>
+            다른 사람의 가방 속 작은 취향을 구경하고,
+            마음에 드는 아이템은 바로 찾아보는 소지품 갤러리.
+          </p>
+          <a class="btn" href="upload.html">+ MY BAG 올리기</a>
+        </section>
+
+        <div class="section-head">
+          <h2>recent bags ♡</h2>
+          <span>little things, real taste</span>
+        </div>
+
+        <p id="page-status" class="status-message" role="status" aria-live="polite"></p>
+
+        <section class="feed-grid" id="feed-list" aria-label="최근 가방 기록">
+          <a class="bag-card card-link" href="detail.html?id=demo-1">
+            <span class="card-sticker">6 ITEMS</span>
+            <div class="photo" role="img" aria-label="피크닉 가방 예시 이미지"></div>
+            <h3>Sunday picnic bag</h3>
+            <p>햇빛 좋은 날 들고 나간 작은 것들.</p>
+            <div class="meta"><span>예시 기록</span><span>둘러보기 →</span></div>
+          </a>
+
+          <a class="bag-card card-link" href="detail.html?id=demo-2">
+            <span class="card-sticker">4 ITEMS</span>
+            <div class="photo" style="background:#e8f8c9" role="img" aria-label="평일 파우치 예시 이미지"></div>
+            <h3>My weekday pouch</h3>
+            <p>출근할 때 꼭 챙기는 현실 파우치.</p>
+            <div class="meta"><span>예시 기록</span><span>둘러보기 →</span></div>
+          </a>
+
+          <a class="bag-card card-link" href="detail.html?id=demo-3">
+            <span class="card-sticker">8 ITEMS</span>
+            <div class="photo" style="background:#f8dfc7" role="img" aria-label="여행 소지품 예시 이미지"></div>
+            <h3>tiny travel things</h3>
+            <p>1박 2일이면 이 정도면 충분해.</p>
+            <div class="meta"><span>예시 기록</span><span>둘러보기 →</span></div>
+          </a>
+        </section>
+      </main>
+
+      <div class="scrap-note">✎ 직접 올린 기록은 이 브라우저에 저장되어 피드 맨 앞에 나타나요.</div>
+      <div class="footer-note">SLIG · strawberry milk edition</div>
+    </div>
+  </div>
+</body>
+</html>

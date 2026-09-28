@@ -1,0 +1,9 @@
+.env*
+.git
+tests
+scripts
+docs
+DESIGN.md
+IMPLEMENTATION.md
+README.md
+**/__pycache__

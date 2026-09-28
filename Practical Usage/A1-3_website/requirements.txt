@@ -1,0 +1,1 @@
+# This function uses only the Python standard library.

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upload — SLIG</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script type="module" src="js/app.mjs"></script>
+</head>
+<body data-page="upload">
+  <div class="page-shell">
+    <div class="site-frame">
+      <header class="topbar">
+        <a class="brand" href="index.html" aria-label="SLIG 피드 홈">
+          <span class="logo-sticker" aria-hidden="true">✦</span>
+          <span class="logo">SLIG</span>
+        </a>
+        <nav class="nav" aria-label="주요 메뉴">
+          <a href="index.html">FEED</a>
+          <a class="active" href="upload.html" aria-current="page">UPLOAD</a>
+          <a href="about.html">ABOUT</a>
+        </nav>
+        <nav class="auth-nav" aria-label="계정 메뉴">
+          <a aria-disabled="true" title="준비 중">로그인</a>
+          <a aria-disabled="true" title="준비 중">회원가입</a>
+        </nav>
+      </header>
+
+      <main class="upload-wrap">
+        <section class="panel">
+          <span class="eyebrow">SHARE YOUR LITTLE THINGS</span>
+          <h1>What’s in your bag?</h1>
+          <p>사진과 제품 이름을 적어주세요. 입력을 잠시 멈추면 AI가 제품 후보를 제안하고, 확인한 정보만 기록에 저장해요.</p>
+
+          <form id="upload-form" novalidate>
+            <label class="upload-zone" for="photo-input">
+              <div>
+                <strong>+ 사진 고르기</strong><br>
+                <small>JPEG / PNG / WEBP</small><br>
+                <input id="photo-input" name="photo" type="file" accept="image/jpeg,image/png,image/webp" required>
+              </div>
+            </label>
+            <p id="photo-status" class="status-message" role="status" aria-live="polite"></p>
+
+            <div class="form-group">
+              <label for="post-title">게시물 제목</label>
+              <input id="post-title" name="title" maxlength="100" required autocomplete="off" placeholder="예: 오늘 출근할 때 챙긴 것들">
+            </div>
+
+            <div class="form-group">
+              <label for="post-description">한 줄 설명</label>
+              <textarea id="post-description" name="description" maxlength="2000" placeholder="가방 속 작은 것들에 대해 들려주세요."></textarea>
+            </div>
+
+            <div id="items" aria-label="아이템 목록"></div>
+
+            <template id="item-template">
+              <article class="item-box">
+                <span class="item-tag" data-item-number>ITEM</span>
+
+                <div class="form-group">
+                  <label data-name-label>제품명</label>
+                  <input data-name name="productName" maxlength="120" required autocomplete="off" placeholder="예: 에어팟 프로 2">
+                </div>
+
+                <div class="form-group">
+                  <label data-options-label>옵션 / 색상</label>
+                  <input data-options name="options" maxlength="120" autocomplete="off" placeholder="예: USB-C, 화이트">
+                </div>
+
+                <div class="ai-box">
+                  <div class="ai-title">
+                    <span>✦ 이 제품 맞아요?</span>
+                    <span class="ai-badge">AI CHECK</span>
+                  </div>
+                  <p class="status-message" data-state role="status" aria-live="polite">상품명을 입력하면 제품을 찾아볼게요.</p>
+                  <div class="product-preview" data-candidate hidden></div>
+                  <div class="confirm-row">
+                    <button class="mini-btn ok" data-confirm type="button">이 제품으로 확인 ♡</button>
+                    <button class="mini-btn" data-edit type="button">입력 수정</button>
+                    <button class="mini-btn" data-retry type="button" hidden>다시 시도</button>
+                    <button class="mini-btn" data-remove type="button">아이템 삭제</button>
+                  </div>
+                </div>
+              </article>
+            </template>
+
+            <div class="form-actions">
+              <button class="btn secondary" id="add-item" type="button">+ 아이템 추가</button>
+              <button class="btn" id="save-post" type="submit">게시하기</button>
+            </div>
+            <p id="form-status" class="status-message error-message" role="alert"></p>
+          </form>
+        </section>
+
+        <aside class="panel preview-card">
+          <span class="eyebrow">LIVE PREVIEW</span>
+          <h2>feed card preview</h2>
+
+          <div class="mock-phone">
+            <div class="photo" id="preview-photo" role="img" aria-label="선택한 사진 미리보기"></div>
+            <h3 id="preview-title">게시물 제목이 여기에 보여요</h3>
+            <p id="preview-description">가방 속 작은 것들에 대한 설명이 여기에 보여요.</p>
+            <div id="preview-items" aria-live="polite">
+              <div class="mock-item"><strong>제품을 입력하고 AI 후보를 확인해 주세요.</strong></div>
+            </div>
+          </div>
+
+          <div class="scrap-note">♡ 사진과 글을 적으면 게시물 모양을 바로 확인할 수 있어요.</div>
+        </aside>
+      </main>
+
+      <div class="footer-note">SLIG · upload screen</div>
+    </div>
+  </div>
+</body>
+</html>
