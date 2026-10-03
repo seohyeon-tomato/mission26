@@ -1,44 +1,34 @@
-# A1-2 Handoff
+# 작업 인계 메모
 
-## 현재 상태
+## 현재 구현
 
-- A1-2 미션 원문을 `A1-2 미션 원문.md`로 보존했다.
-- OpenAI 계열 API + Kakao Local API 조합을 사용한다.
-- `travel_planner.py`에 GPT-5 모델 호환 요청, 추천 JSON 검증, JSON 오류 1회 재시도, 장소 검색 추상화, 도시명 정규화, raw JSON 기준 날짜별 결과 캐시, Markdown 필수 섹션 검증, 저장 오류 기록을 반영했다.
-- 결과 캐싱과 복수 지역 추천 보너스를 구현했다. `--multi-region`에서는 2~3개 도시의 `region_details`와 `restaurants_by_city`를 사용한다.
-- 단일/복수 모드는 raw JSON의 `mode`로 구분하며, 기존 `mode` 없는 단일 캐시도 계속 읽는다.
-- API 키는 로컬 `.env`에만 있으며 문서·코드·결과에는 기록하지 않는다.
+- `travel_planner.py`는 OpenAI 호환 Chat Completions API와 Kakao Local API를 연결합니다.
+- 날짜 옵션 검사, 추천 JSON 검증, 파싱 재시도 1회, 장소 오류 기록, Markdown fallback을 포함합니다.
+- `--multi-region`은 여러 도시 추천과 도시별 맛집 검색을 수행합니다.
+- 같은 날짜의 완전한 결과는 모드를 비교해 캐시에서 읽습니다.
+- 결과는 `results/YYYY-MM-DD_raw.json`과 `results/YYYY-MM-DD_travel_plan.md`로 저장합니다.
 
-## 생성한 문서
+## 확인한 내용
 
-- `SPEC.md`
-- `README.md`
-- `mission_brief_template.md`
-- `pre_submission_checklist.md`
-- `handoff.md`
-- `docs/superpowers/specs/2026-08-10-a1-2-multi-region-design.md`
-- `docs/superpowers/plans/2026-08-10-a1-2-multi-region.md`
-- `mission_analysis.md`
-- `.env.example`
-- `travel_planner.py`
-- `results/.gitkeep`
+- 회귀 테스트 19개와 문법 검사를 실행했습니다.
+- OpenAI 추천·보고서 생성 및 Kakao 장소 검색을 실제로 실행했습니다.
+- 2026-10-03, 10-04, 10-05, 10-09의 결과 파일이 있습니다.
+- API 키는 `.env`에만 두며 `.env`는 저장소에 포함하지 않습니다.
+- README, 요구사항 분석, 설계 노트의 표현과 구성을 재정리했습니다. 미션 원문과 생성된 여행 결과 파일은 실행·참조 자료로 유지했습니다.
 
-## 검증 결과
+## 다시 실행
 
-- `python3 -m unittest discover -s tests -v` (A1-2 폴더에서 실행): 19개 통과.
-- `python3 -m py_compile travel_planner.py` (A1-2 폴더에서 실행): 통과.
-- `--help`, 잘못된 날짜 입력, 키 누락 안내: 확인 완료.
-- 실제 OpenAI/Kakao 실행: OpenAI 추천·최종 리포트는 성공했다. Kakao는 처음 `OPEN_MAP_AND_LOCAL` 서비스 비활성화로 `HTTP 403`을 반환했지만, 서비스 활성화 후에는 검색 결과도 성공했다.
-- 캐시 보너스: 완전한 raw JSON 재사용, Markdown 누락 시 fallback 재생성, 필수 섹션 누락 캐시의 fallback 재생성을 회귀 테스트로 확인했다.
-- 복수 지역 보너스: JSON 스키마 검증, 3개 지역 반복 검색, 한 지역 0건·API 오류 후 계속 처리, 지역별 Markdown, 복수 캐시 재사용을 외부 API 없이 확인했다.
-- 비밀값 점검: 키 값은 출력·문서화하지 않고 `SET/MISSING` 방식으로만 확인했다.
+저장소의 `Practical Usage/a1-2` 폴더로 이동한 다음 아래 명령을 사용합니다.
 
-## 다음 작업
+```bash
+python3 -m unittest discover -s tests -v
+python3 travel_planner.py --date "YYYY-MM-DD"
+```
 
-제출 전에는 지정된 네 문서와 실제 구현의 상태가 일치하는지만 다시 확인한다. 실제 키 값과 생성 결과를 문서에 복사하지 않는다. 복수 지역 실행은 `--multi-region` 선택 옵션으로만 사용한다.
+외부 API 호출은 키와 네트워크가 필요합니다. 이미 해당 날짜·모드의 캐시가 있으면 API 요청 없이 저장 결과를 재사용할 수 있습니다.
 
-## 주의사항
+## 남은 제출 전 확인
 
-- 미션 원문에 없는 조건을 임의로 추가하지 않는다.
-- 모호한 조건은 질문으로 남긴다.
-- AI가 만든 분석 결과는 `pre_submission_checklist.md` 기준으로 다시 검토한다.
+- [ ] README와 결과 리포트를 마지막으로 대조한다.
+- [ ] 최신 변경을 GitHub 브랜치에 푸시한다.
+- [ ] 실제 API 키가 커밋에 없는지 다시 확인한다.
