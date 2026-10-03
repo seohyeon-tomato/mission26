@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+results/*
+!results/sample_mock_raw.json
+!results/sample_mock_travel_plan.md
