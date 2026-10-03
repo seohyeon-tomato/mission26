@@ -1,128 +1,277 @@
-# A1-2 · API 활용 국내 여행지 추천 프로그램
+# 인터넷 정보를 받아와서 여행지 추천해주는 파이썬 프로그램
 
-날짜를 입력하면 **Gemini가 도시를 추천 → Kakao Local이 맛집을 검색 → Gemini가 여행 리포트를 작성**하는 Python CLI 프로그램입니다. AI의 JSON을 다음 API의 입력으로 연결하는 것이 핵심입니다.
+A1-2 미션 산출물입니다. 사용자가 여행 날짜를 입력하면 LLM API가 국내 추천 지역을 JSON으로 만들고, Kakao Local API가 해당 지역의 맛집을 검색한 뒤, 최종 여행 리포트를 Markdown 파일로 저장합니다. `--multi-region`을 선택하면 2~3개 지역을 각각 검색하는 보너스 모드도 사용할 수 있습니다.
 
-> 구현 및 모의 API 테스트 결과를 포함합니다. 현재 실제 API 키를 사용한 통합 실행은 미검증입니다. `results/sample_mock_*`는 명시적으로 만든 모의 데이터이며 실제 검색·추천 결과가 아닙니다. 제출 전 본인 키로 실행해 실제 결과를 확인하세요.
+## 제출 정보
 
-## 1. 실행 환경과 키 설정
+- 미션 폴더: `A1-2/`
+- 실행 파일: `travel_planner.py`
+- 원본 데이터 저장 위치: `results/YYYY-MM-DD_raw.json`
+- 최종 리포트 저장 위치: `results/YYYY-MM-DD_travel_plan.md`
+- 선택한 API 조합: OpenAI 계열 API + Kakao Local API
 
-Python **3.10 이상**. Python 표준 라이브러리만 사용하므로 별도 패키지 설치가 필요 없습니다.
+## 실행 환경
 
-```bash
-cd "Practical Usage/a1-2"
-python3 --version
+- Python 3.10 이상
+- 터미널 실행
+- 웹 UI 없음
+- 외부 패키지 설치 없이 Python 표준 라이브러리만 사용
+
+## API 키 설정
+
+API 키는 코드에 직접 쓰지 않습니다. `A1-2/.env` 파일 또는 환경변수로 설정합니다.
+
+`.env.example`을 참고해 `A1-2/.env` 파일을 만듭니다.
+
+```text
+OPENAI_API_KEY=YOUR_OPENAI_API_KEY
+OPENAI_MODEL=gpt-5.6-luna
+KAKAO_REST_API_KEY=YOUR_KAKAO_REST_API_KEY
 ```
 
-macOS 기본 `python3`가 3.9라면 설치된 `python3.14` 등 3.10 이상 명령으로 아래의 `python3`를 바꿔 실행하세요. 이 프로젝트는 Python 3.14에서 검증했습니다.
-
-- [Google AI Studio](https://aistudio.google.com/apikey)에서 Gemini API 키를 준비합니다.
-- [Kakao Developers](https://developers.kakao.com/)의 앱 설정에서 Local API 사용 권한과 REST API 키를 확인합니다. JavaScript 키가 아닌 REST API 키를 사용합니다.
-- 각 제공자의 사용량·과금·쿼터를 확인합니다. 정상 실행은 Gemini 2회, Kakao 1회 요청하며, 추천 JSON이 잘못되면 Gemini를 최대 1회 추가 요청합니다.
-
-macOS/Linux에서 키 값이 명령 기록에 남지 않도록 숨김 입력으로 설정할 수 있습니다.
-
-```bash
-# zsh 또는 bash: 실제 키는 프롬프트가 나온 뒤 입력
-printf 'Gemini API key: '; read -rs GEMINI_API_KEY; printf '\n'
-export GEMINI_API_KEY
-printf 'Kakao REST API key: '; read -rs KAKAO_REST_API_KEY; printf '\n'
-export KAKAO_REST_API_KEY
-```
-
-Windows PowerShell:
+Windows PowerShell에서 현재 터미널 세션에만 설정하려면 아래처럼 입력합니다.
 
 ```powershell
-$env:GEMINI_API_KEY = [System.Net.NetworkCredential]::new('', (Read-Host 'Gemini API key' -AsSecureString)).Password
-$env:KAKAO_REST_API_KEY = [System.Net.NetworkCredential]::new('', (Read-Host 'Kakao REST API key' -AsSecureString)).Password
+$env:OPENAI_API_KEY="YOUR_KEY"
+$env:KAKAO_REST_API_KEY="YOUR_KEY"
 ```
 
-기본 모델은 `gemini-3.8-flash`입니다. Google은 새 프로젝트에 이 모델을 권장하며, 기존 `gemini-2.5-flash`는 일부 기존 사용자로 접근이 제한될 수 있다고 안내합니다. 계정에서 이용 가능한 구조화 출력 지원 모델로 바꾸려면 `GEMINI_MODEL` 환경변수를 설정합니다. 모델 이용 가능 여부는 실제 호출 전 [공식 모델 목록](https://ai.google.dev/gemini-api/docs/models)에서 확인하세요.
-
-키는 **환경변수에서만** 읽습니다. `.env` 자동 로딩은 구현하지 않았습니다. 새 터미널에서는 다시 설정해야 합니다. 코드·README·결과 파일·캡처에 키를 붙여 넣지 마세요. `.gitignore`는 `.env` 및 로컬 실행 결과를 제외하고, 저장 직전 현재 키와 일치하는 문자열도 마스킹합니다. 키 분리는 유출 방지와 코드 수정 없는 키 교체를 위한 것입니다.
-
-## 2. 실행과 결과 확인
+macOS/Linux에서는 아래처럼 입력합니다.
 
 ```bash
-python3 travel_planner.py -date "2026-10-15"
-# 과제 예시의 --date 표기도 지원
-python3 travel_planner.py --date "2026-10-15"
+export OPENAI_API_KEY="YOUR_KEY"
+export KAKAO_REST_API_KEY="YOUR_KEY"
 ```
 
-진행 로그는 `[1/3] 추천 → [2/3] 맛집 검색 → [3/3] 리포트` 순서로 나오고 마지막에 저장 경로가 출력됩니다.
+실제 키 값은 README, 코드, 결과 파일, Git 커밋에 포함하지 않습니다.
 
-결과는 실행 위치와 관계없이 이 프로젝트의 `results/`에 저장됩니다.
+## HTTP 메서드 선택 근거
 
-- `<실행일_시각>_raw.json`: 여행일, 실행 시각, 추천 JSON, 맛집 목록, errors
-- `<실행일_시각>_travel_plan.md`: 추천 지역·이유, 날씨, 행사, 맛집, 오전/오후/저녁 일정, 오류 요약
+OpenAI 호출은 `POST`를 사용합니다. 모델 이름과 대화 메시지, 응답 형식 요구사항이 요청 본문에 들어가기 때문입니다.
 
-파일명은 **실행 날짜 기준**이고 여행 날짜는 파일 안에 별도로 기록합니다. 마이크로초까지 붙여 반복 실행 시 덮어쓰기를 피합니다. Markdown은 편집기 미리보기로 열 수 있습니다. 날씨는 일반적 계절 경향, 행사는 후보이며 실제 예보·확정 일정은 별도 확인해야 합니다.
+Kakao Local 키워드 검색은 `GET`을 사용합니다. 검색어와 크기 같은 필터가 읽기 전용 쿼리 파라미터에 자연스럽게 들어가기 때문입니다.
 
-## 3. 입력 → 처리 → 조건 → 출력
+이 선택은 HTTP 설계 관점의 설명이며, 보안 보장을 의미하지는 않습니다. 실제 보안은 키를 코드에 두지 않고 `.env` 또는 환경변수로만 관리하는 것으로 확보합니다.
 
-| 설계 항목 | 내용 |
-|---|---|
-| 입력 데이터 | 필수 `-date YYYY-MM-DD`, 환경변수의 API 키 |
-| Trigger | 터미널에서 프로그램 실행 |
-| 처리/변환 | Gemini JSON 파싱·필수 타입 검증 → `recommended_city` 추출 → `<도시> 맛집` 검색 |
-| 조건 분기 | 날짜/키 오류는 종료, 추천 JSON 오류는 1회 재시도, 장소 오류·0건은 빈 목록으로 진행 |
-| Action/출력 | 추천과 검색값을 Gemini에 전달해 Markdown 생성, JSON/Markdown 저장 |
-| 실행 로그와 오류 확인 | 단계별 로그, 원본 JSON과 리포트의 `errors` |
+## 프롬프트와 재시도 정책
 
-JSON 필수 구조:
+기본 모드의 1차 추천 LLM 응답은 JSON 전용으로 다룹니다. 요구 키는 아래 4개입니다.
+
+- `recommended_city`
+- `weather`
+- `events`
+- `reason`
+
+미션 기준과 현재 평가 기준에서는 `events`가 1~3개 문자열이어야 하고, `reason`은 2~4문장 범위가 기대됩니다. 현재 구현은 JSON 파싱과 필수 키/타입 검증을 수행하고, JSON 파싱이나 검증에 실패했을 때만 1회 repair retry를 시도합니다.
+
+복수 지역 모드에서는 다음 구조를 사용합니다.
 
 ```json
 {
-  "recommended_city": "강릉",
-  "weather": "일반적인 가을 날씨 설명",
-  "events": ["일정 확인이 필요한 지역 행사 후보"],
-  "reason": "추천 근거 첫 문장입니다. 두 번째 근거입니다."
+  "recommended_cities": ["제주", "강릉", "부산"],
+  "region_details": [
+    {
+      "city": "제주",
+      "weather": "온화하고 바람이 있습니다.",
+      "events": ["유채꽃 행사"],
+      "reason": "봄 풍경을 즐기기 좋습니다. 해안 산책을 함께 할 수 있습니다."
+    },
+    {
+      "city": "강릉",
+      "weather": "선선하고 맑습니다.",
+      "events": ["해변 문화 행사"],
+      "reason": "바다 풍경을 보기 좋습니다. 카페와 전통시장을 함께 둘러볼 수 있습니다."
+    },
+    {
+      "city": "부산",
+      "weather": "따뜻하고 쾌청합니다.",
+      "events": ["항구 축제"],
+      "reason": "도시와 바다를 함께 즐길 수 있습니다. 대중교통으로 이동하기 편리합니다."
+    }
+  ]
 }
 ```
 
-`recommended_city` 값을 `search_places()`에 전달합니다. Kakao의 `place_name/address_name/category_name/place_url/x/y`는 `name/address/category/url/x/y`로 정리하며 좌표는 숫자로 변환합니다. 최종 리포트의 맛집 섹션은 검색 결과로 고정하여 AI가 새로운 가게를 끼워 넣지 않게 합니다.
+`recommended_cities`는 2~3개의 중복 없는 도시여야 하며, `region_details`에는 각 도시의 날씨·행사·추천 이유가 하나씩 있어야 합니다.
 
-## 4. 오류 정책
+HTTP 오류, 인증 실패, 쿼터 초과는 JSON으로 다시 해석하지 않습니다. 그런 경우에는 `errors`에 기록하고 다음 단계로 넘어갑니다.
 
-| 상황 | 동작 |
-|---|---|
-| 날짜 누락·잘못된 형식·존재하지 않는 날짜 | argparse가 사용법 안내 후 종료(코드 2), API 호출 없음 |
-| 키 하나라도 미설정 | 설정 방법 안내 후 즉시 종료(코드 1) |
-| 추천 JSON 파싱/필수 타입 오류 | 프롬프트를 보강해 딱 1회 재시도; 재실패 시 오류 JSON 저장 후 종료 |
-| 장소 검색 0건 | `EMPTY_RESULT` 기록, 맛집 `데이터 없음`, 리포트 계속 생성 |
-| 장소 인증/쿼터/네트워크/파싱 실패 | 오류 기록, 맛집 `데이터 없음`, 리포트 계속 생성 |
-| LLM 인증/쿼터/네트워크 실패 | 단계·오류 JSON 저장 후 종료(코드 1) |
-| 최종 리포트 필수 제목/일정 누락 | 불완전 리포트를 성공으로 표시하지 않고 오류 JSON 저장 후 종료 |
-| 파일 저장 실패 | 권한·디스크 공간 확인 안내 후 종료 |
+## 실행 방법
 
-401/403은 키와 권한, 429는 사용량·쿼터, 네트워크 오류는 연결 상태를 확인합니다. 각 요청은 45초 타임아웃을 사용하며 무한 재시도하지 않습니다. API 오류 응답 본문이나 인증 헤더를 로그에 남기지 않습니다.
+작업공간 루트에서 실행:
 
-## 5. 검증과 제출
+```bash
+cd A1-2
+python travel_planner.py --date "2026-03-15"
+```
+
+복수 지역 추천 보너스를 실행하려면 선택 옵션을 추가합니다.
+
+```bash
+python travel_planner.py --date "2026-03-15" --multi-region
+```
+
+미션 원문에 맞춰 `-date` 형식도 지원합니다.
+
+```bash
+python travel_planner.py -date "2026-03-15"
+```
+
+도움말 확인:
+
+```bash
+python travel_planner.py --help
+```
+
+문법 검증:
+
+```bash
+python -m py_compile travel_planner.py
+```
+
+## 실행 흐름
+
+```text
+[1/3] 1차 추천 생성 중(LLM)...
+  - recommended_city: "제주"
+[2/3] 맛집 검색 중(지도/장소 API)...
+  - 맛집 5곳 검색 완료
+[3/3] 최종 리포트 생성 중(LLM)...
+  - 리포트 생성 완료
+
+완료! results/2026-03-15_travel_plan.md 를 확인하세요.
+원본 데이터: results/2026-03-15_raw.json
+```
+
+## 결과물 확인
+
+실행 후 `results/` 폴더에 아래 파일이 생성됩니다.
+
+| 파일 | 내용 |
+| --- | --- |
+| `YYYY-MM-DD_raw.json` | 1차 추천 JSON, 맛집 검색 결과, 오류 요약 |
+| `YYYY-MM-DD_travel_plan.md` | 최종 국내 여행 추천 리포트 |
+
+원본 JSON에는 최소한 아래 구조가 들어갑니다.
+
+```json
+{
+  "date": "2026-03-15",
+  "recommendation": {
+    "recommended_city": "제주",
+    "weather": "3월 중순의 일반적 날씨 요약",
+    "events": ["행사 후보"],
+    "reason": "추천 근거"
+  },
+  "restaurants": [],
+  "errors": []
+}
+```
+
+복수 지역 모드의 원본 JSON은 `mode: "multi"`, `recommendation.recommended_cities`, `recommendation.region_details`, `restaurants_by_city`, `errors`를 저장합니다.
+
+## 주요 기능
+
+- `argparse` 기반 CLI 실행
+- `-date` 또는 `--date` 필수 옵션 지원
+- `YYYY-MM-DD` 날짜 형식 검증
+- `.env` 또는 환경변수에서 API 키 읽기
+- OpenAI 계열 API로 1차 추천 JSON 생성
+- `--multi-region` 선택 시 2~3개 지역 추천 JSON 생성
+- LLM JSON 파싱 실패 시 최대 1회 재시도
+- Kakao Local API로 추천 도시 맛집 검색
+- 복수 지역 모드에서 지역별 Kakao 맛집 검색 반복
+- 맛집 검색 0건 또는 API 실패 시 리포트 생성 계속 진행
+- 최종 Markdown 여행 리포트 생성
+- 원본 JSON과 Markdown 파일을 `results/`에 저장
+- 오류 목록을 `errors` 배열로 관리
+
+## 오류 기록 형식과 점검 포인트
+
+`errors`에는 아래 구조의 항목이 누적됩니다.
+
+```json
+{
+  "step": "place_search",
+  "type": "AUTH_ERROR",
+  "message": "HTTP 403"
+}
+```
+
+`step`은 어느 단계에서 문제가 났는지, `type`은 오류 분류, `message`는 사람이 읽을 수 있는 요약입니다.
+복수 지역 모드의 장소 검색 오류에는 문제가 발생한 `city`도 함께 기록합니다.
+
+401/403이 보이면 아래를 먼저 확인합니다.
+
+- `.env`의 변수 이름이 `OPENAI_API_KEY`, `OPENAI_MODEL`, `KAKAO_REST_API_KEY`인지
+- 요청 헤더 형식이 OpenAI는 `Authorization: Bearer ...`, Kakao는 `Authorization: KakaoAK ...`인지
+- Kakao REST 키가 해당 앱의 로컬 검색 권한을 갖고 있는지
+- OpenAI 계정/프로젝트가 현재 `OPENAI_MODEL`에 접근할 수 있는지
+
+외부 실행 검증에서 OpenAI 추천과 최종 리포트 생성은 성공했습니다. Kakao Local은 처음에 앱의 `OPEN_MAP_AND_LOCAL` 서비스가 비활성화되어 `HTTP 403`을 반환했지만, 해당 서비스를 활성화한 뒤에는 맛집 검색 결과도 정상 확인했습니다. 키 값은 출력하지 않고, 존재 여부와 이름만 확인합니다.
+
+## 요구사항 대응표
+
+| 미션 요구사항 | 반영 내용 |
+| --- | --- |
+| Python 3.10 이상 | 표준 라이브러리 기반 Python 프로그램 |
+| CLI 기반 프로그램 | `travel_planner.py`를 터미널에서 실행 |
+| `argparse` 사용 | `parse_args()`에서 인자 처리 |
+| 필수 옵션 `-date "YYYY-MM-DD"` | `-date`, `--date` 모두 지원 |
+| 날짜 형식 검증 | 형식 오류 시 argparse 사용법 출력 후 종료 |
+| LLM API 택1 | OpenAI 계열 API 사용 |
+| 지도/장소 API 택1 | Kakao Local 키워드 검색 API 사용 |
+| LLM 1차 추천 JSON | 기본 모드는 `recommended_city`, 복수 모드는 `recommended_cities`와 `region_details` 생성 |
+| JSON 파싱 가능 출력 | JSON 전용 프롬프트와 파싱 함수 사용 |
+| 맛집 N곳 검색 | 추천 도시 + `맛집` 키워드로 최대 5곳 검색, 복수 모드는 지역별 반복 |
+| 맛집 0건 처리 | 중단하지 않고 `데이터 없음`으로 리포트 진행 |
+| 최종 Markdown 리포트 | 추천 지역, 이유, 날씨, 행사, 맛집, 일정, 오류 요약 포함 |
+| API 호출/파싱 오류 처리 | `try-except`와 `errors` 배열 사용 |
+| API 키 미설정 처리 | 설정 방법 안내 후 즉시 종료 |
+| 지도 API 실패 처리 | 맛집 빈 목록으로 두고 리포트 생성 계속 |
+| LLM JSON 파싱 실패 처리 | 최대 1회 재시도 |
+| API 키 보안 | `.env`, 환경변수, `.gitignore`, `.env.example` 사용 |
+| 결과 저장 | `results/YYYY-MM-DD_raw.json`, `results/YYYY-MM-DD_travel_plan.md` 생성 |
+
+## 오류 처리 정책
+
+- API 키 미설정: 프로그램을 종료하고 설정 방법을 안내합니다.
+- LLM JSON 파싱 실패: 한 번만 재요청합니다.
+- Kakao Local 인증/네트워크/쿼터 오류: `errors`에 기록하고 맛집은 `데이터 없음`으로 처리합니다.
+- 최종 리포트 생성 실패: 프로그램 내부에서 기본 Markdown 리포트를 생성합니다.
+
+## 캐시, 도시 정규화, 검색 추상화
+
+- 같은 날짜의 완전한 `results/YYYY-MM-DD_raw.json`이 있으면 Markdown 유무와 관계없이 현재 실행 모드에 맞는지 확인한 뒤 API를 다시 호출하지 않고 재사용합니다.
+- raw JSON은 있지만 Markdown이 없거나 비어 있으면 API를 호출하지 않고 로컬 fallback Markdown을 재생성합니다.
+- JSON이 손상됐거나 날짜·필수 키가 다르면 캐시를 무시하고 정상 흐름으로 다시 실행합니다.
+- 기존 `mode` 없는 raw JSON은 단일 모드 캐시로 읽고, 복수 모드 캐시는 `mode: "multi"`와 지역별 필드를 모두 요구합니다. 단일/복수 형식이 다르면 서로의 캐시를 재사용하지 않습니다.
+- `서울`, `서울시`, `서울특별시`처럼 흔한 도시 표기는 검색 전에 같은 검색어로 정규화합니다.
+- 장소 검색은 `PlaceSearchProvider` 인터페이스 뒤에 있으며, 현재 실제 공급자는 `KakaoPlaceSearchProvider` 하나입니다.
+
+캐시는 같은 날짜를 반복 실행할 때 API 비용을 줄이는 보완 기능입니다. 여행 날짜를 바꾸면 별도 결과 파일을 사용합니다.
+
+LLM이 만든 Markdown은 저장 전에 모드별 필수 섹션을 확인합니다. 단일 모드는 `추천 지역`, `추천 이유`, `날씨 요약`, `행사/축제`, `맛집 추천`, `1일 일정 제안`, `오류 요약(errors)`을, 복수 모드는 `추천 지역`, `지역별 추천`, `날씨 요약`, `행사/축제`, `지역별 맛집 추천`, `1일 일정 제안`, `오류 요약(errors)`을 요구합니다. 하나라도 빠지면 해당 모드의 기본 Markdown 리포트로 대체합니다.
+
+## 테스트
+
+외부 API를 호출하지 않는 회귀 테스트는 아래처럼 실행합니다.
 
 ```bash
 python3 -m unittest discover -s tests -v
-python3 -m py_compile travel_planner.py
-python3 scripts/generate_sample.py  # API 호출 없이 모의 샘플 재생성
 ```
 
-- [필수 조건 대조표](docs/REQUIREMENTS.md)
-- [검증 기록](docs/TEST_RESULTS.md)
-- [모의 원본 데이터](results/sample_mock_raw.json)
-- [모의 리포트](results/sample_mock_travel_plan.md)
+## API 키 보안 주의
 
-실제 실행 후에는 성공 로그와 결과 파일 내용을 확인하고 키·개인정보가 없는 증거를 남깁니다. 로컬 실결과는 기본적으로 Git에서 제외합니다. 검토한 결과만 제출하려면 해당 JSON/Markdown 파일 두 개를 경로로 지정해 `git add -f` 하세요.
+API 키를 코드에 직접 쓰면 GitHub 업로드나 화면 공유 중 외부에 노출될 수 있습니다. 또한 키 교체가 필요할 때 코드를 수정해야 하고, 과금/쿼터가 있는 서비스에서 사고가 날 수 있습니다.
 
-## 6. 배운 점과 범위
+그래서 이 프로그램은 실제 키를 `.env` 또는 환경변수에서만 읽습니다. `.env`와 실행 결과 JSON/Markdown은 `.gitignore`에 등록했습니다.
 
-- **REST 요청/응답:** 내 코드가 URL·헤더·입력 데이터를 보내면 서비스가 JSON으로 응답합니다. Kakao의 GET은 장소 조회, Gemini의 POST는 본문에 프롬프트를 보내 생성 처리를 요청합니다.
-- **데이터 연결:** AI의 자유로운 문장 대신 JSON 필드를 받으면 다음 요청의 입력을 명확하게 고를 수 있습니다. Java의 DTO 필드를 Service의 다음 메서드에 전달하는 흐름과 비슷합니다.
-- **부분 실패 처리:** 장소 검색이 실패해도 추천 정보가 있으면 리포트는 만들 수 있습니다. 실패한 단계와 계속 가능한 단계를 구분합니다.
+## 보너스 과제
 
-MVP는 도시 1개와 맛집 최대 5곳, 리포트 1개입니다. 복수 도시·캐싱·웹 화면은 구현하지 않은 추가 기능입니다. 포트폴리오에는 입력 → 외부 API 두 종류 → 결과물 흐름과 검색 실패 시 계속 진행하는 설계 이유를 설명할 수 있습니다.
+선택 보너스 중 결과 캐싱과 복수 지역 추천을 구현했습니다. 같은 날짜의 완전한 raw JSON을 현재 모드에 맞게 재사용하고, Markdown이 없거나 필수 섹션이 빠진 경우에는 API를 호출하지 않고 해당 모드의 fallback Markdown을 재생성합니다.
 
-**지금 반드시 이해:** `recommended_city`가 다음 API의 검색어로 어떻게 전달되는지 설명하기.
+- 복수 지역 추천: 구현 완료 (`--multi-region`)
+- 결과 캐싱: 구현 완료
 
-## 공식 문서
-
-- [Gemini GenerateContent REST API](https://ai.google.dev/api/generate-content)
-- [Gemini 구조화 출력](https://ai.google.dev/gemini-api/docs/generate-content/structured-output)
-- [Kakao Local 키워드 장소 검색](https://developers.kakao.com/docs/latest/ko/local/dev-guide#search-by-keyword)
+복수 지역 모드에서는 한 지역의 검색 결과가 0건이거나 오류여도 다른 지역 검색을 계속하고, 지역별 목록과 `errors`에 결과를 남깁니다.
