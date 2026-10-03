@@ -36,7 +36,7 @@ $env:GEMINI_API_KEY = [System.Net.NetworkCredential]::new('', (Read-Host 'Gemini
 $env:KAKAO_REST_API_KEY = [System.Net.NetworkCredential]::new('', (Read-Host 'Kakao REST API key' -AsSecureString)).Password
 ```
 
-기본 모델은 `gemini-2.5-flash`입니다. 계정에서 이용 가능한 구조화 출력 지원 모델로 바꾸려면 `GEMINI_MODEL` 환경변수를 설정합니다. 모델 이용 가능 여부는 실제 호출 전 제공자 문서에서 확인하세요.
+기본 모델은 `gemini-3.8-flash`입니다. Google은 새 프로젝트에 이 모델을 권장하며, 기존 `gemini-2.5-flash`는 일부 기존 사용자로 접근이 제한될 수 있다고 안내합니다. 계정에서 이용 가능한 구조화 출력 지원 모델로 바꾸려면 `GEMINI_MODEL` 환경변수를 설정합니다. 모델 이용 가능 여부는 실제 호출 전 [공식 모델 목록](https://ai.google.dev/gemini-api/docs/models)에서 확인하세요.
 
 키는 **환경변수에서만** 읽습니다. `.env` 자동 로딩은 구현하지 않았습니다. 새 터미널에서는 다시 설정해야 합니다. 코드·README·결과 파일·캡처에 키를 붙여 넣지 마세요. `.gitignore`는 `.env` 및 로컬 실행 결과를 제외하고, 저장 직전 현재 키와 일치하는 문자열도 마스킹합니다. 키 분리는 유출 방지와 코드 수정 없는 키 교체를 위한 것입니다.
 

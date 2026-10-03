@@ -51,6 +51,11 @@ class TransportIntegrationTests(unittest.TestCase):
             with self.subTest(value=value), patch.object(app, 'request_json', return_value=value), self.assertRaises(app.APIError):
                 app.gemini('prompt', 'fake', 'model')
 
+    def test_default_model_uses_current_recommended_flash(self):
+        with tempfile.TemporaryDirectory() as folder, patch.object(app, 'BASE', Path(folder)), patch.dict(os.environ, {'GEMINI_API_KEY': 'fake-g', 'KAKAO_REST_API_KEY': 'fake-k'}, clear=True), patch.object(app, 'recommend', side_effect=app.APIError('HTTP_ERROR', 'test')) as recommend:
+            self.assertEqual(app.main(['-date', '2026-10-15']), 1)
+        self.assertEqual(recommend.call_args.args[2], 'gemini-3.8-flash')
+
 
 if __name__ == '__main__':
     unittest.main()

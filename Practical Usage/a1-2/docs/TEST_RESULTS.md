@@ -10,11 +10,11 @@ python3.14 -m py_compile travel_planner.py
 python3.14 scripts/generate_sample.py
 ```
 
-총 20개 테스트가 통과했습니다. HTTP 전송만 모의 응답으로 대체한 연결 테스트는 CLI → Gemini 파싱 → Kakao 검색 → Gemini 리포트 → 실제 임시 파일 저장을 검사합니다. 음식점 1건/0건을 모두 확인했습니다. 개별 테스트에서는 인증·쿼터·네트워크 오류, JSON 재시도 상한, 누락 키와 날짜 검증, 키 마스킹, 최종 LLM 실패 시 원본 보존을 확인했습니다.
+최신 재검증에서 총 21개 테스트가 통과했습니다. HTTP 전송만 모의 응답으로 대체한 연결 테스트는 CLI → Gemini 파싱 → Kakao 검색 → Gemini 리포트 → 실제 임시 파일 저장을 검사합니다. 음식점 1건/0건을 모두 확인했습니다. 개별 테스트에서는 인증·쿼터·네트워크 오류, JSON 재시도 상한, 누락 키와 날짜 검증, 키 마스킹, 최종 LLM 실패 시 원본 보존, 기본 모델 선택을 확인했습니다.
 
 문법 검사와 모의 샘플 재생성도 종료 코드 0으로 완료했습니다.
 
-### 실제 테스트 출력
+### 최초 테스트 출력 (기본 모델 변경 전)
 
 ```text
 test_blocked_or_truncated_gemini_is_an_error (test_integration.TransportIntegrationTests.test_blocked_or_truncated_gemini_is_an_error) ... ok
@@ -44,8 +44,10 @@ Ran 20 tests in 0.025s
 OK
 ```
 
+기본 모델 변경 후 동일한 명령으로 재실행한 결과는 `Ran 21 tests ... OK`였습니다.
+
 ## 검증 한계와 다음 실행
 
-이 환경에 GEMINI_API_KEY와 KAKAO_REST_API_KEY가 없어 **실제 외부 API 호출은 하지 않았습니다**. 모델의 현재 이용 가능 여부, 실제 계정 권한·과금·쿼터, 실응답과 리포트 품질은 아직 검증하지 않았습니다. `sample_mock_*` 파일은 실제 API 증거가 아닙니다.
+이 환경에 GEMINI_API_KEY와 KAKAO_REST_API_KEY가 없어 **실제 외부 API 호출은 하지 않았습니다**. 기본 모델을 신규 프로젝트에 권장되는 `gemini-3.8-flash`로 변경했으나, 실제 계정에서의 접근 권한·과금·쿼터, 실응답과 리포트 품질은 아직 검증하지 않았습니다. `sample_mock_*` 파일은 실제 API 증거가 아닙니다.
 
 다음 한 단계: README대로 본인 키를 환경변수에 설정하고 `python3.14 travel_planner.py -date "2026-10-15"`로 실행해 실제 JSON과 Markdown을 확인합니다. 민감정보 없는 성공 로그 및 결과를 최종 제출 증거로 남깁니다.

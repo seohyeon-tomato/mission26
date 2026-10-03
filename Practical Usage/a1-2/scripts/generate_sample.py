@@ -46,10 +46,10 @@ def main():
     ]
     errors = []
     with patch.object(planner, 'request_json', side_effect=replies) as transport:
-        result = planner.recommend('2026-10-15', 'unused-mock-key', 'gemini-2.5-flash', errors)
+        result = planner.recommend('2026-10-15', 'unused-mock-key', 'gemini-3.8-flash', errors)
         places = planner.search_places(result['recommended_city'], 'unused-mock-key', errors)
         data = {'travel_date': '2026-10-15', 'source': 'mock_api', 'note': '실제 API 호출 없음. 검색 0건 시 리포트 계속 생성하는 예시.', 'recommendation': result, 'places': places, 'errors': errors}
-        markdown = planner.create_report(data, 'unused-mock-key', 'gemini-2.5-flash')
+        markdown = planner.create_report(data, 'unused-mock-key', 'gemini-3.8-flash')
         assert transport.call_count == 3
     output = planner.BASE / 'results'
     output.mkdir(exist_ok=True)

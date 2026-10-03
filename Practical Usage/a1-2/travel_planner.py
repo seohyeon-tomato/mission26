@@ -179,7 +179,7 @@ def main(argv=None):
     if not all(keys):
         print('API 키 미설정: GEMINI_API_KEY와 KAKAO_REST_API_KEY 환경변수를 설정하세요. README의 설정 방법을 확인하세요.')
         return 1
-    model = os.environ.get('GEMINI_MODEL', 'gemini-2.5-flash')
+    model = os.environ.get('GEMINI_MODEL', 'gemini-3.8-flash')
     now = datetime.now().astimezone()
     stem = now.strftime('%Y-%m-%d_%H%M%S_%f')
     output = BASE / 'results'
