@@ -88,7 +88,7 @@ def save_chart(summary):
 
     title = f"월별 평균 승객 수가 가장 적은 달은 {lowest['month']}월" if korean_font else f"Month {lowest['month']} has the lowest average passenger count"
     subtitle = f"{period} | 각 달 {len(years)}개 관측치 | 파랑: 최저 평균, 주황: 최고 평균" if korean_font else f"{period} | {len(years)} observations per month | Blue: lowest, orange: highest"
-    note = "월별 총계의 평균이며, 월마다 일수가 다릅니다. 항공권 가격을 비교한 그래프는 아닙니다." if korean_font else "Averages of monthly totals. Month lengths differ. These are passenger counts, not ticket prices."
+    note = "월별 총계의 12년 평균입니다. 월마다 일수가 다르며, 일평균으로 보정하지 않았습니다." if korean_font else "12-year averages of monthly passenger totals. Month lengths differ; values are not adjusted per day."
     fig.text(0.09, 0.93, title, fontsize=21, weight="normal" if korean_font else "bold", color="#17243A")
     fig.text(0.09, 0.872, subtitle, fontsize=11, color="#52637A")
     fig.text(0.09, 0.075, note, fontsize=10, color="#52637A")
