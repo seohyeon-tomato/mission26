@@ -1,0 +1,178 @@
+{
+  "unit": "thousands of passengers",
+  "monthly": [
+    {
+      "month": 1,
+      "count": 12,
+      "average_thousands": 241.75
+    },
+    {
+      "month": 2,
+      "count": 12,
+      "average_thousands": 235.0
+    },
+    {
+      "month": 3,
+      "count": 12,
+      "average_thousands": 270.1666666666667
+    },
+    {
+      "month": 4,
+      "count": 12,
+      "average_thousands": 267.0833333333333
+    },
+    {
+      "month": 5,
+      "count": 12,
+      "average_thousands": 271.8333333333333
+    },
+    {
+      "month": 6,
+      "count": 12,
+      "average_thousands": 311.6666666666667
+    },
+    {
+      "month": 7,
+      "count": 12,
+      "average_thousands": 351.3333333333333
+    },
+    {
+      "month": 8,
+      "count": 12,
+      "average_thousands": 351.0833333333333
+    },
+    {
+      "month": 9,
+      "count": 12,
+      "average_thousands": 302.4166666666667
+    },
+    {
+      "month": 10,
+      "count": 12,
+      "average_thousands": 266.5833333333333
+    },
+    {
+      "month": 11,
+      "count": 12,
+      "average_thousands": 232.83333333333334
+    },
+    {
+      "month": 12,
+      "count": 12,
+      "average_thousands": 261.8333333333333
+    }
+  ],
+  "yearly": [
+    {
+      "year": 1949,
+      "lowest_months": [
+        11
+      ],
+      "highest_months": [
+        7,
+        8
+      ]
+    },
+    {
+      "year": 1950,
+      "lowest_months": [
+        11
+      ],
+      "highest_months": [
+        7,
+        8
+      ]
+    },
+    {
+      "year": 1951,
+      "lowest_months": [
+        1
+      ],
+      "highest_months": [
+        7,
+        8
+      ]
+    },
+    {
+      "year": 1952,
+      "lowest_months": [
+        1
+      ],
+      "highest_months": [
+        8
+      ]
+    },
+    {
+      "year": 1953,
+      "lowest_months": [
+        11
+      ],
+      "highest_months": [
+        8
+      ]
+    },
+    {
+      "year": 1954,
+      "lowest_months": [
+        2
+      ],
+      "highest_months": [
+        7
+      ]
+    },
+    {
+      "year": 1955,
+      "lowest_months": [
+        2
+      ],
+      "highest_months": [
+        7
+      ]
+    },
+    {
+      "year": 1956,
+      "lowest_months": [
+        11
+      ],
+      "highest_months": [
+        7
+      ]
+    },
+    {
+      "year": 1957,
+      "lowest_months": [
+        2
+      ],
+      "highest_months": [
+        8
+      ]
+    },
+    {
+      "year": 1958,
+      "lowest_months": [
+        11
+      ],
+      "highest_months": [
+        8
+      ]
+    },
+    {
+      "year": 1959,
+      "lowest_months": [
+        2
+      ],
+      "highest_months": [
+        8
+      ]
+    },
+    {
+      "year": 1960,
+      "lowest_months": [
+        11
+      ],
+      "highest_months": [
+        7
+      ]
+    }
+  ]
+}

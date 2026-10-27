@@ -1,0 +1,12 @@
+Python 3.12.14 / Matplotlib 3.11.2
+PASS: source CSV unchanged; SHA-256 matches collection metadata
+PASS: all 12 monthly means match independent Decimal calculations
+PASS: every month has 12 observations; incomplete years are rejected
+PASS: yearly minimum counts are November 6, February 4, January 2
+PASS: July/August yearly peaks and tied peak months are preserved
+PASS: saved PNG is valid and measures 2160 x 1188
+PASS: 11 local document/image links resolve
+PASS: existing inspect_data.py output is identical before and after extracting the data reader
+PASS: Python syntax checks completed for all three scripts
+PASS: pip check reported no broken requirements
+PASS: chart visually inspected for Korean text, axis units, zero baseline, values and clipping

@@ -1,0 +1,836 @@
+{
+  "observations": 144,
+  "unit": "thousands of passengers",
+  "moving_average_window": 12,
+  "series": [
+    {
+      "month": "1949-01",
+      "passengers_thousands": 112.0,
+      "moving_average_12": null
+    },
+    {
+      "month": "1949-02",
+      "passengers_thousands": 118.0,
+      "moving_average_12": null
+    },
+    {
+      "month": "1949-03",
+      "passengers_thousands": 132.0,
+      "moving_average_12": null
+    },
+    {
+      "month": "1949-04",
+      "passengers_thousands": 129.0,
+      "moving_average_12": null
+    },
+    {
+      "month": "1949-05",
+      "passengers_thousands": 121.0,
+      "moving_average_12": null
+    },
+    {
+      "month": "1949-06",
+      "passengers_thousands": 135.0,
+      "moving_average_12": null
+    },
+    {
+      "month": "1949-07",
+      "passengers_thousands": 148.0,
+      "moving_average_12": null
+    },
+    {
+      "month": "1949-08",
+      "passengers_thousands": 148.0,
+      "moving_average_12": null
+    },
+    {
+      "month": "1949-09",
+      "passengers_thousands": 136.0,
+      "moving_average_12": null
+    },
+    {
+      "month": "1949-10",
+      "passengers_thousands": 119.0,
+      "moving_average_12": null
+    },
+    {
+      "month": "1949-11",
+      "passengers_thousands": 104.0,
+      "moving_average_12": null
+    },
+    {
+      "month": "1949-12",
+      "passengers_thousands": 118.0,
+      "moving_average_12": 126.66666666666667
+    },
+    {
+      "month": "1950-01",
+      "passengers_thousands": 115.0,
+      "moving_average_12": 126.91666666666667
+    },
+    {
+      "month": "1950-02",
+      "passengers_thousands": 126.0,
+      "moving_average_12": 127.58333333333333
+    },
+    {
+      "month": "1950-03",
+      "passengers_thousands": 141.0,
+      "moving_average_12": 128.33333333333334
+    },
+    {
+      "month": "1950-04",
+      "passengers_thousands": 135.0,
+      "moving_average_12": 128.83333333333334
+    },
+    {
+      "month": "1950-05",
+      "passengers_thousands": 125.0,
+      "moving_average_12": 129.16666666666666
+    },
+    {
+      "month": "1950-06",
+      "passengers_thousands": 149.0,
+      "moving_average_12": 130.33333333333334
+    },
+    {
+      "month": "1950-07",
+      "passengers_thousands": 170.0,
+      "moving_average_12": 132.16666666666666
+    },
+    {
+      "month": "1950-08",
+      "passengers_thousands": 170.0,
+      "moving_average_12": 134.0
+    },
+    {
+      "month": "1950-09",
+      "passengers_thousands": 158.0,
+      "moving_average_12": 135.83333333333334
+    },
+    {
+      "month": "1950-10",
+      "passengers_thousands": 133.0,
+      "moving_average_12": 137.0
+    },
+    {
+      "month": "1950-11",
+      "passengers_thousands": 114.0,
+      "moving_average_12": 137.83333333333334
+    },
+    {
+      "month": "1950-12",
+      "passengers_thousands": 140.0,
+      "moving_average_12": 139.66666666666666
+    },
+    {
+      "month": "1951-01",
+      "passengers_thousands": 145.0,
+      "moving_average_12": 142.16666666666666
+    },
+    {
+      "month": "1951-02",
+      "passengers_thousands": 150.0,
+      "moving_average_12": 144.16666666666666
+    },
+    {
+      "month": "1951-03",
+      "passengers_thousands": 178.0,
+      "moving_average_12": 147.25
+    },
+    {
+      "month": "1951-04",
+      "passengers_thousands": 163.0,
+      "moving_average_12": 149.58333333333334
+    },
+    {
+      "month": "1951-05",
+      "passengers_thousands": 172.0,
+      "moving_average_12": 153.5
+    },
+    {
+      "month": "1951-06",
+      "passengers_thousands": 178.0,
+      "moving_average_12": 155.91666666666666
+    },
+    {
+      "month": "1951-07",
+      "passengers_thousands": 199.0,
+      "moving_average_12": 158.33333333333334
+    },
+    {
+      "month": "1951-08",
+      "passengers_thousands": 199.0,
+      "moving_average_12": 160.75
+    },
+    {
+      "month": "1951-09",
+      "passengers_thousands": 184.0,
+      "moving_average_12": 162.91666666666666
+    },
+    {
+      "month": "1951-10",
+      "passengers_thousands": 162.0,
+      "moving_average_12": 165.33333333333334
+    },
+    {
+      "month": "1951-11",
+      "passengers_thousands": 146.0,
+      "moving_average_12": 168.0
+    },
+    {
+      "month": "1951-12",
+      "passengers_thousands": 166.0,
+      "moving_average_12": 170.16666666666666
+    },
+    {
+      "month": "1952-01",
+      "passengers_thousands": 171.0,
+      "moving_average_12": 172.33333333333334
+    },
+    {
+      "month": "1952-02",
+      "passengers_thousands": 180.0,
+      "moving_average_12": 174.83333333333334
+    },
+    {
+      "month": "1952-03",
+      "passengers_thousands": 193.0,
+      "moving_average_12": 176.08333333333334
+    },
+    {
+      "month": "1952-04",
+      "passengers_thousands": 181.0,
+      "moving_average_12": 177.58333333333334
+    },
+    {
+      "month": "1952-05",
+      "passengers_thousands": 183.0,
+      "moving_average_12": 178.5
+    },
+    {
+      "month": "1952-06",
+      "passengers_thousands": 218.0,
+      "moving_average_12": 181.83333333333334
+    },
+    {
+      "month": "1952-07",
+      "passengers_thousands": 230.0,
+      "moving_average_12": 184.41666666666666
+    },
+    {
+      "month": "1952-08",
+      "passengers_thousands": 242.0,
+      "moving_average_12": 188.0
+    },
+    {
+      "month": "1952-09",
+      "passengers_thousands": 209.0,
+      "moving_average_12": 190.08333333333334
+    },
+    {
+      "month": "1952-10",
+      "passengers_thousands": 191.0,
+      "moving_average_12": 192.5
+    },
+    {
+      "month": "1952-11",
+      "passengers_thousands": 172.0,
+      "moving_average_12": 194.66666666666666
+    },
+    {
+      "month": "1952-12",
+      "passengers_thousands": 194.0,
+      "moving_average_12": 197.0
+    },
+    {
+      "month": "1953-01",
+      "passengers_thousands": 196.0,
+      "moving_average_12": 199.08333333333334
+    },
+    {
+      "month": "1953-02",
+      "passengers_thousands": 196.0,
+      "moving_average_12": 200.41666666666666
+    },
+    {
+      "month": "1953-03",
+      "passengers_thousands": 236.0,
+      "moving_average_12": 204.0
+    },
+    {
+      "month": "1953-04",
+      "passengers_thousands": 235.0,
+      "moving_average_12": 208.5
+    },
+    {
+      "month": "1953-05",
+      "passengers_thousands": 229.0,
+      "moving_average_12": 212.33333333333334
+    },
+    {
+      "month": "1953-06",
+      "passengers_thousands": 243.0,
+      "moving_average_12": 214.41666666666666
+    },
+    {
+      "month": "1953-07",
+      "passengers_thousands": 264.0,
+      "moving_average_12": 217.25
+    },
+    {
+      "month": "1953-08",
+      "passengers_thousands": 272.0,
+      "moving_average_12": 219.75
+    },
+    {
+      "month": "1953-09",
+      "passengers_thousands": 237.0,
+      "moving_average_12": 222.08333333333334
+    },
+    {
+      "month": "1953-10",
+      "passengers_thousands": 211.0,
+      "moving_average_12": 223.75
+    },
+    {
+      "month": "1953-11",
+      "passengers_thousands": 180.0,
+      "moving_average_12": 224.41666666666666
+    },
+    {
+      "month": "1953-12",
+      "passengers_thousands": 201.0,
+      "moving_average_12": 225.0
+    },
+    {
+      "month": "1954-01",
+      "passengers_thousands": 204.0,
+      "moving_average_12": 225.66666666666666
+    },
+    {
+      "month": "1954-02",
+      "passengers_thousands": 188.0,
+      "moving_average_12": 225.0
+    },
+    {
+      "month": "1954-03",
+      "passengers_thousands": 235.0,
+      "moving_average_12": 224.91666666666666
+    },
+    {
+      "month": "1954-04",
+      "passengers_thousands": 227.0,
+      "moving_average_12": 224.25
+    },
+    {
+      "month": "1954-05",
+      "passengers_thousands": 234.0,
+      "moving_average_12": 224.66666666666666
+    },
+    {
+      "month": "1954-06",
+      "passengers_thousands": 264.0,
+      "moving_average_12": 226.41666666666666
+    },
+    {
+      "month": "1954-07",
+      "passengers_thousands": 302.0,
+      "moving_average_12": 229.58333333333334
+    },
+    {
+      "month": "1954-08",
+      "passengers_thousands": 293.0,
+      "moving_average_12": 231.33333333333334
+    },
+    {
+      "month": "1954-09",
+      "passengers_thousands": 259.0,
+      "moving_average_12": 233.16666666666666
+    },
+    {
+      "month": "1954-10",
+      "passengers_thousands": 229.0,
+      "moving_average_12": 234.66666666666666
+    },
+    {
+      "month": "1954-11",
+      "passengers_thousands": 203.0,
+      "moving_average_12": 236.58333333333334
+    },
+    {
+      "month": "1954-12",
+      "passengers_thousands": 229.0,
+      "moving_average_12": 238.91666666666666
+    },
+    {
+      "month": "1955-01",
+      "passengers_thousands": 242.0,
+      "moving_average_12": 242.08333333333334
+    },
+    {
+      "month": "1955-02",
+      "passengers_thousands": 233.0,
+      "moving_average_12": 245.83333333333334
+    },
+    {
+      "month": "1955-03",
+      "passengers_thousands": 267.0,
+      "moving_average_12": 248.5
+    },
+    {
+      "month": "1955-04",
+      "passengers_thousands": 269.0,
+      "moving_average_12": 252.0
+    },
+    {
+      "month": "1955-05",
+      "passengers_thousands": 270.0,
+      "moving_average_12": 255.0
+    },
+    {
+      "month": "1955-06",
+      "passengers_thousands": 315.0,
+      "moving_average_12": 259.25
+    },
+    {
+      "month": "1955-07",
+      "passengers_thousands": 364.0,
+      "moving_average_12": 264.4166666666667
+    },
+    {
+      "month": "1955-08",
+      "passengers_thousands": 347.0,
+      "moving_average_12": 268.9166666666667
+    },
+    {
+      "month": "1955-09",
+      "passengers_thousands": 312.0,
+      "moving_average_12": 273.3333333333333
+    },
+    {
+      "month": "1955-10",
+      "passengers_thousands": 274.0,
+      "moving_average_12": 277.0833333333333
+    },
+    {
+      "month": "1955-11",
+      "passengers_thousands": 237.0,
+      "moving_average_12": 279.9166666666667
+    },
+    {
+      "month": "1955-12",
+      "passengers_thousands": 278.0,
+      "moving_average_12": 284.0
+    },
+    {
+      "month": "1956-01",
+      "passengers_thousands": 284.0,
+      "moving_average_12": 287.5
+    },
+    {
+      "month": "1956-02",
+      "passengers_thousands": 277.0,
+      "moving_average_12": 291.1666666666667
+    },
+    {
+      "month": "1956-03",
+      "passengers_thousands": 317.0,
+      "moving_average_12": 295.3333333333333
+    },
+    {
+      "month": "1956-04",
+      "passengers_thousands": 313.0,
+      "moving_average_12": 299.0
+    },
+    {
+      "month": "1956-05",
+      "passengers_thousands": 318.0,
+      "moving_average_12": 303.0
+    },
+    {
+      "month": "1956-06",
+      "passengers_thousands": 374.0,
+      "moving_average_12": 307.9166666666667
+    },
+    {
+      "month": "1956-07",
+      "passengers_thousands": 413.0,
+      "moving_average_12": 312.0
+    },
+    {
+      "month": "1956-08",
+      "passengers_thousands": 405.0,
+      "moving_average_12": 316.8333333333333
+    },
+    {
+      "month": "1956-09",
+      "passengers_thousands": 355.0,
+      "moving_average_12": 320.4166666666667
+    },
+    {
+      "month": "1956-10",
+      "passengers_thousands": 306.0,
+      "moving_average_12": 323.0833333333333
+    },
+    {
+      "month": "1956-11",
+      "passengers_thousands": 271.0,
+      "moving_average_12": 325.9166666666667
+    },
+    {
+      "month": "1956-12",
+      "passengers_thousands": 306.0,
+      "moving_average_12": 328.25
+    },
+    {
+      "month": "1957-01",
+      "passengers_thousands": 315.0,
+      "moving_average_12": 330.8333333333333
+    },
+    {
+      "month": "1957-02",
+      "passengers_thousands": 301.0,
+      "moving_average_12": 332.8333333333333
+    },
+    {
+      "month": "1957-03",
+      "passengers_thousands": 356.0,
+      "moving_average_12": 336.0833333333333
+    },
+    {
+      "month": "1957-04",
+      "passengers_thousands": 348.0,
+      "moving_average_12": 339.0
+    },
+    {
+      "month": "1957-05",
+      "passengers_thousands": 355.0,
+      "moving_average_12": 342.0833333333333
+    },
+    {
+      "month": "1957-06",
+      "passengers_thousands": 422.0,
+      "moving_average_12": 346.0833333333333
+    },
+    {
+      "month": "1957-07",
+      "passengers_thousands": 465.0,
+      "moving_average_12": 350.4166666666667
+    },
+    {
+      "month": "1957-08",
+      "passengers_thousands": 467.0,
+      "moving_average_12": 355.5833333333333
+    },
+    {
+      "month": "1957-09",
+      "passengers_thousands": 404.0,
+      "moving_average_12": 359.6666666666667
+    },
+    {
+      "month": "1957-10",
+      "passengers_thousands": 347.0,
+      "moving_average_12": 363.0833333333333
+    },
+    {
+      "month": "1957-11",
+      "passengers_thousands": 305.0,
+      "moving_average_12": 365.9166666666667
+    },
+    {
+      "month": "1957-12",
+      "passengers_thousands": 336.0,
+      "moving_average_12": 368.4166666666667
+    },
+    {
+      "month": "1958-01",
+      "passengers_thousands": 340.0,
+      "moving_average_12": 370.5
+    },
+    {
+      "month": "1958-02",
+      "passengers_thousands": 318.0,
+      "moving_average_12": 371.9166666666667
+    },
+    {
+      "month": "1958-03",
+      "passengers_thousands": 362.0,
+      "moving_average_12": 372.4166666666667
+    },
+    {
+      "month": "1958-04",
+      "passengers_thousands": 348.0,
+      "moving_average_12": 372.4166666666667
+    },
+    {
+      "month": "1958-05",
+      "passengers_thousands": 363.0,
+      "moving_average_12": 373.0833333333333
+    },
+    {
+      "month": "1958-06",
+      "passengers_thousands": 435.0,
+      "moving_average_12": 374.1666666666667
+    },
+    {
+      "month": "1958-07",
+      "passengers_thousands": 491.0,
+      "moving_average_12": 376.3333333333333
+    },
+    {
+      "month": "1958-08",
+      "passengers_thousands": 505.0,
+      "moving_average_12": 379.5
+    },
+    {
+      "month": "1958-09",
+      "passengers_thousands": 404.0,
+      "moving_average_12": 379.5
+    },
+    {
+      "month": "1958-10",
+      "passengers_thousands": 359.0,
+      "moving_average_12": 380.5
+    },
+    {
+      "month": "1958-11",
+      "passengers_thousands": 310.0,
+      "moving_average_12": 380.9166666666667
+    },
+    {
+      "month": "1958-12",
+      "passengers_thousands": 337.0,
+      "moving_average_12": 381.0
+    },
+    {
+      "month": "1959-01",
+      "passengers_thousands": 360.0,
+      "moving_average_12": 382.6666666666667
+    },
+    {
+      "month": "1959-02",
+      "passengers_thousands": 342.0,
+      "moving_average_12": 384.6666666666667
+    },
+    {
+      "month": "1959-03",
+      "passengers_thousands": 406.0,
+      "moving_average_12": 388.3333333333333
+    },
+    {
+      "month": "1959-04",
+      "passengers_thousands": 396.0,
+      "moving_average_12": 392.3333333333333
+    },
+    {
+      "month": "1959-05",
+      "passengers_thousands": 420.0,
+      "moving_average_12": 397.0833333333333
+    },
+    {
+      "month": "1959-06",
+      "passengers_thousands": 472.0,
+      "moving_average_12": 400.1666666666667
+    },
+    {
+      "month": "1959-07",
+      "passengers_thousands": 548.0,
+      "moving_average_12": 404.9166666666667
+    },
+    {
+      "month": "1959-08",
+      "passengers_thousands": 559.0,
+      "moving_average_12": 409.4166666666667
+    },
+    {
+      "month": "1959-09",
+      "passengers_thousands": 463.0,
+      "moving_average_12": 414.3333333333333
+    },
+    {
+      "month": "1959-10",
+      "passengers_thousands": 407.0,
+      "moving_average_12": 418.3333333333333
+    },
+    {
+      "month": "1959-11",
+      "passengers_thousands": 362.0,
+      "moving_average_12": 422.6666666666667
+    },
+    {
+      "month": "1959-12",
+      "passengers_thousands": 405.0,
+      "moving_average_12": 428.3333333333333
+    },
+    {
+      "month": "1960-01",
+      "passengers_thousands": 417.0,
+      "moving_average_12": 433.0833333333333
+    },
+    {
+      "month": "1960-02",
+      "passengers_thousands": 391.0,
+      "moving_average_12": 437.1666666666667
+    },
+    {
+      "month": "1960-03",
+      "passengers_thousands": 419.0,
+      "moving_average_12": 438.25
+    },
+    {
+      "month": "1960-04",
+      "passengers_thousands": 461.0,
+      "moving_average_12": 443.6666666666667
+    },
+    {
+      "month": "1960-05",
+      "passengers_thousands": 472.0,
+      "moving_average_12": 448.0
+    },
+    {
+      "month": "1960-06",
+      "passengers_thousands": 535.0,
+      "moving_average_12": 453.25
+    },
+    {
+      "month": "1960-07",
+      "passengers_thousands": 622.0,
+      "moving_average_12": 459.4166666666667
+    },
+    {
+      "month": "1960-08",
+      "passengers_thousands": 606.0,
+      "moving_average_12": 463.3333333333333
+    },
+    {
+      "month": "1960-09",
+      "passengers_thousands": 508.0,
+      "moving_average_12": 467.0833333333333
+    },
+    {
+      "month": "1960-10",
+      "passengers_thousands": 461.0,
+      "moving_average_12": 471.5833333333333
+    },
+    {
+      "month": "1960-11",
+      "passengers_thousands": 390.0,
+      "moving_average_12": 473.9166666666667
+    },
+    {
+      "month": "1960-12",
+      "passengers_thousands": 432.0,
+      "moving_average_12": 476.1666666666667
+    }
+  ],
+  "annual": [
+    {
+      "year": 1949,
+      "average_thousands": 126.66666666666667,
+      "minimum_thousands": 104.0,
+      "maximum_thousands": 148.0,
+      "range_thousands": 44.0,
+      "range_to_average_percent": 34.73684210526316
+    },
+    {
+      "year": 1950,
+      "average_thousands": 139.66666666666666,
+      "minimum_thousands": 114.0,
+      "maximum_thousands": 170.0,
+      "range_thousands": 56.0,
+      "range_to_average_percent": 40.095465393794754
+    },
+    {
+      "year": 1951,
+      "average_thousands": 170.16666666666666,
+      "minimum_thousands": 145.0,
+      "maximum_thousands": 199.0,
+      "range_thousands": 54.0,
+      "range_to_average_percent": 31.733594515181196
+    },
+    {
+      "year": 1952,
+      "average_thousands": 197.0,
+      "minimum_thousands": 171.0,
+      "maximum_thousands": 242.0,
+      "range_thousands": 71.0,
+      "range_to_average_percent": 36.04060913705584
+    },
+    {
+      "year": 1953,
+      "average_thousands": 225.0,
+      "minimum_thousands": 180.0,
+      "maximum_thousands": 272.0,
+      "range_thousands": 92.0,
+      "range_to_average_percent": 40.88888888888889
+    },
+    {
+      "year": 1954,
+      "average_thousands": 238.91666666666666,
+      "minimum_thousands": 188.0,
+      "maximum_thousands": 302.0,
+      "range_thousands": 114.0,
+      "range_to_average_percent": 47.71538193233345
+    },
+    {
+      "year": 1955,
+      "average_thousands": 284.0,
+      "minimum_thousands": 233.0,
+      "maximum_thousands": 364.0,
+      "range_thousands": 131.0,
+      "range_to_average_percent": 46.12676056338028
+    },
+    {
+      "year": 1956,
+      "average_thousands": 328.25,
+      "minimum_thousands": 271.0,
+      "maximum_thousands": 413.0,
+      "range_thousands": 142.0,
+      "range_to_average_percent": 43.25971058644326
+    },
+    {
+      "year": 1957,
+      "average_thousands": 368.4166666666667,
+      "minimum_thousands": 301.0,
+      "maximum_thousands": 467.0,
+      "range_thousands": 166.0,
+      "range_to_average_percent": 45.0576792580864
+    },
+    {
+      "year": 1958,
+      "average_thousands": 381.0,
+      "minimum_thousands": 310.0,
+      "maximum_thousands": 505.0,
+      "range_thousands": 195.0,
+      "range_to_average_percent": 51.181102362204726
+    },
+    {
+      "year": 1959,
+      "average_thousands": 428.3333333333333,
+      "minimum_thousands": 342.0,
+      "maximum_thousands": 559.0,
+      "range_thousands": 217.0,
+      "range_to_average_percent": 50.66147859922179
+    },
+    {
+      "year": 1960,
+      "average_thousands": 476.1666666666667,
+      "minimum_thousands": 390.0,
+      "maximum_thousands": 622.0,
+      "range_thousands": 232.0,
+      "range_to_average_percent": 48.72243612180609
+    }
+  ],
+  "outlier_screen": {
+    "method": "global 1.5 IQR; inclusive quartiles; candidates only, no automatic deletion",
+    "q1": 180.0,
+    "q3": 360.5,
+    "iqr": 180.5,
+    "lower_bound": -90.75,
+    "upper_bound": 631.25,
+    "candidates": [],
+    "removed_count": 0
+  },
+  "first_to_last_year_average_change_percent": 275.92105263157896
+}

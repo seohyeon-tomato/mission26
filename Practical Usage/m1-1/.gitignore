@@ -1,0 +1,6 @@
+__pycache__/
+.venv/
+.cache/
+.DS_Store
+# 원본 CSV는 로컬에 두고 수집 방법을 공유한다.
+data/AirPassengers.csv

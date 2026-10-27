@@ -1,0 +1,9 @@
+{
+  "dataset": "AirPassengers",
+  "source_url": "https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/datasets/AirPassengers.csv",
+  "documentation_url": "https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/AirPassengers.html",
+  "downloaded_at_utc": "2026-10-26T09:54:01.431543+00:00",
+  "sha256": "bdb98adbd418a6de6842a742e0602f363c3b841c26677e7e61a1e055e9509bd8",
+  "rows": 144,
+  "unit": "thousands of passengers"
+}
